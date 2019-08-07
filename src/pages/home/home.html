@@ -7,45 +7,25 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="card-background-page" padding>
-    <ion-list>
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="assets/imgs/filo.png">
-          </ion-thumbnail>
-          <h2>Filomeno</h2>
-          <p>27 servicios completos</p>
-        </ion-item>
-        <ion-item>
-            <ion-thumbnail item-start>
-              <img src="assets/imgs/filo.png">
-            </ion-thumbnail>
-            <h2>Filomeno</h2>
-            <p>27 servicios completos</p>
-          </ion-item>
-      </ion-list>
-
+<ion-content class="card-background-page">
       <ion-grid>
           <ion-row>
             <ion-col col-6>
+                <ion-card (click)="dogDetails()">
+                    <img src="assets/imgs/filo.png"/>
+                    <div class="card-title">Filomeno</div>
+                  </ion-card>
+            </ion-col>
+            <ion-col col-6>
                 <ion-card>
                     <img src="assets/imgs/filo.png"/>
-                    <div class="card-title">São Paulo</div>
-                    <div class="card-subtitle">41 Listings</div>
+                    <div class="card-title">Doky</div>
                   </ion-card>
             </ion-col>
             <ion-col col-6>
                 <ion-card>
                     <img src="assets/imgs/filo.png"/>
                     <div class="card-title">São Paulo</div>
-                    <div class="card-subtitle">41 Listings</div>
-                  </ion-card>
-            </ion-col>
-            <ion-col col-6>
-                <ion-card>
-                    <img src="assets/imgs/filo.png"/>
-                    <div class="card-title">São Paulo</div>
-                    <div class="card-subtitle">41 Listings</div>
                   </ion-card>
             </ion-col>
           </ion-row>

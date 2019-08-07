@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { DogDetailsPage } from '../pages/dog-details/dog-details';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { SignUpPage } from '../pages/sign-up/sign-up';
@@ -18,6 +19,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ListPage,
     LoginPage,
     SignUpPage,
+    DogDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ListPage,
     LoginPage,
     SignUpPage,
+    DogDetailsPage
   ],
   providers: [
     StatusBar,
