@@ -14,6 +14,9 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.menu-inner .scroll-content{
+    background: red;
+}
 .header-box{
     width: 100%;
     height: 80px;
@@ -39,6 +42,7 @@
     margin:0;
     overflow: auto;
     height: calc(100% - 80px);
+    position: relative;
 
     .label-ios {
         margin: 6px 8px 6px 0;
@@ -59,6 +63,12 @@
                 font-size: 1.2em;
             }            
         }        
+    }
+    li.logout{
+        position: absolute;
+        bottom: 10px;
+        text-align: center;
+        background: transparent;
     }
 }
 

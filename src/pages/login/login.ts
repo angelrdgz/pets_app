@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
+import { ApiProvider } from  './../../providers/api/api';
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { HomePage } from '../home/home';
+
+import { Storage } from '@ionic/storage';
+import { LoadingController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -14,12 +13,38 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+  loader:any;
+  public user = {email:"angel@pets.com", password:"Hola1@"}
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public apiProvider: ApiProvider,
+    public loadingCtrl: LoadingController,
+    private storage: Storage
+  ) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+  }
+
+  presentLoading(text) {
+    this.loader = this.loadingCtrl.create({
+      content: text,
+    });
+    this.loader.present();
+  }
+
+  login(){
+
+    this.presentLoading("Iniciando Sesión");
+
+    this.apiProvider.login(this.user).then((data:any) => {
+      this.storage.set('pet_token', data.token);
+      this.storage.set('pet_user', JSON.stringify(data.user));
+      this.loader.dismiss();
+      this.navCtrl.setRoot(HomePage);
+    });
+  	 
   }
 
 }

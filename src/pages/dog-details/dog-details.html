@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar color="green-app">
-    <ion-title>dog-details</ion-title>
+    <ion-title *ngIf="pet">{{pet.name}}</ion-title>
   </ion-navbar>
 </ion-header>
 

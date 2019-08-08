@@ -2,10 +2,10 @@
   <ion-content>
     <div class="header-box">
         <ion-grid>
-            <ion-row>
+            <ion-row *ngIf="user">
               <ion-col col-8>
-                <p><b>Angel Garcia</b></p>
-                <p>angelrodriguez@ucol.mx</p>               
+                <p><b>{{user.name}}</b></p>
+                <p>{{user.email}}</p>               
               </ion-col>
               <ion-col col-4>
                   <img src="assets/imgs/pp.jpg" class="pp" alt="">
@@ -28,12 +28,10 @@
               </ion-grid>
         </div>
       </li>
-    </ul>    
-    <!--<ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>-->
+      <li class="logout">
+        <button ion-button menuClose color="danger" round (click)="logout()">Salir</button>
+      </li>
+    </ul>
   </ion-content>
 
 </ion-menu>

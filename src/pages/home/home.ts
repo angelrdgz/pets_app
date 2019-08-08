@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController  } from 'ionic-angular';
 import { DogDetailsPage } from '../dog-details/dog-details';
+
+import { NewPetPage } from '../new-pet/new-pet';
+
+import { ApiProvider } from  './../../providers/api/api';
 
 @Component({
   selector: 'page-home',
@@ -8,12 +12,33 @@ import { DogDetailsPage } from '../dog-details/dog-details';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  public pets:any;
+
+  constructor(public navCtrl: NavController, public apiProvider: ApiProvider,public modalCtrl: ModalController) {
 
   }
 
-  dogDetails(){
-    this.navCtrl.push(DogDetailsPage)
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad LoginPage');
+    this.getPets();
+  }
+
+  dogDetails(id){
+    this.navCtrl.push(DogDetailsPage, {id:id})
+  }
+
+  getPets(){
+
+    this.apiProvider.getPets().then((data:any) => {
+      console.log(data)
+      this.pets = data.data;
+    });
+
+  }
+
+  newPet() {
+    const modal = this.modalCtrl.create(NewPetPage);
+    modal.present();
   }
 
 }

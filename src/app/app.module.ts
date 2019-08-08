@@ -5,12 +5,19 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DogDetailsPage } from '../pages/dog-details/dog-details';
+import { NewPetPage } from '../pages/new-pet/new-pet';
 import { ListPage } from '../pages/list/list';
+
 import { LoginPage } from '../pages/login/login';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+import { InterceptorProvider } from '../providers/interceptor/interceptor';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
+import { ApiProvider } from '../providers/api/api';
 
 @NgModule({
   declarations: [
@@ -19,11 +26,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ListPage,
     LoginPage,
     SignUpPage,
-    DogDetailsPage
+    DogDetailsPage,
+    NewPetPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -32,12 +42,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ListPage,
     LoginPage,
     SignUpPage,
-    DogDetailsPage
+    DogDetailsPage,
+    NewPetPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorProvider, multi: true },
+    ApiProvider,
   ]
 })
 export class AppModule {}

@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the DogDetailsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ApiProvider } from  './../../providers/api/api';
 
 @IonicPage()
 @Component({
@@ -15,11 +10,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DogDetailsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public pet:any;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public apiProvider: ApiProvider
+    ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DogDetailsPage');
+    this.getPet(this.navParams.get('id'))
+  }
+
+  getPet(id){
+
+    this.apiProvider.getPet(id).then((data:any) => {
+      console.log(data)
+      this.pet = data.data;
+    });
+
   }
 
 }
