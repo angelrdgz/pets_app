@@ -51,7 +51,7 @@ export class MyApp {
           self.rootPage = LoginPage;
         } else {
           this.user = JSON.parse(condition);
-          self.rootPage = HomePage;
+          self.rootPage = ListPage;
         }
       });
       this.splashScreen.hide();

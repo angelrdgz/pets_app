@@ -6,6 +6,8 @@ import { NewPetPage } from '../new-pet/new-pet';
 
 import { ApiProvider } from  './../../providers/api/api';
 
+import { NewServicePage } from '../new-service/new-service';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -37,7 +39,7 @@ export class HomePage {
   }
 
   newPet() {
-    const modal = this.modalCtrl.create(NewPetPage);
+    const modal = this.modalCtrl.create(NewServicePage);
     modal.present();
   }
 

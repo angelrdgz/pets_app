@@ -5,7 +5,7 @@ import { Observable } from "rxjs/Rx"
 import { Storage } from '@ionic/storage';
 
 interface Res {
-  data:any;
+  data: any;
 }
 
 @Injectable()
@@ -22,7 +22,7 @@ export class ApiProvider {
 
   login(data) {
     return new Promise(resolve => {
-      this.http.post(this.url + '/auth/login', data).subscribe((data:any) => {
+      this.http.post(this.url + '/auth/login', data).subscribe((data: any) => {
         resolve(data);
       },
         err => {
@@ -33,7 +33,7 @@ export class ApiProvider {
 
   logout() {
     return new Promise(resolve => {
-      this.http.post(this.url + '/auth/logout',{}).subscribe((data:any) => {
+      this.http.post(this.url + '/auth/logout', {}).subscribe((data: any) => {
         resolve(data);
       },
         err => {
@@ -42,27 +42,38 @@ export class ApiProvider {
     });
   }
 
-  getPets(){
-      return new Promise(resolve => {
-        this.http.get<Res>(this.url+'/pets').subscribe((data:any) => {
-          resolve(data);
-          }, 
+  getPets() {
+    return new Promise(resolve => {
+      this.http.get<Res>(this.url + '/pets').subscribe((data: any) => {
+        resolve(data);
+      },
         err => {
-        console.log(err);
+          console.log(err);
         });
-      });
+    });
   }
 
-  getPet(id){
+  getPet(id) {
     return new Promise(resolve => {
-      this.http.get<Res>(this.url+'/pets/'+id).subscribe((data:any) => {
+      this.http.get<Res>(this.url + '/pets/' + id).subscribe((data: any) => {
         resolve(data);
-        }, 
-      err => {
-      console.log(err);
-      });
+      },
+        err => {
+          console.log(err);
+        });
     });
-}
+  }
+
+  getZoneServices(id){
+    return new Promise(resolve => {
+      this.http.get<Res>(this.url + '/get-services/' + id).subscribe((data: any) => {
+        resolve(data);
+      },
+        err => {
+          console.log(err);
+        });
+    });
+  }
 
 
 }

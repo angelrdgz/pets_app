@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { ServiceDetailsPage } from '../service-details/service-details';
+import { NewServicePage } from '../new-service/new-service';
 
 @Component({
   selector: 'page-list',
@@ -10,8 +12,10 @@ export class ListPage {
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public modalCtrl: ModalController) {
     this.selectedItem = navParams.get('item');
 
     // Let's populate this page with some filler content for funzies
@@ -33,5 +37,14 @@ export class ListPage {
     this.navCtrl.push(ListPage, {
       item: item
     });
+  }
+
+  serviceDetails(id){
+    this.navCtrl.push(ServiceDetailsPage, {id:id})
+  }
+
+  newService() {
+    const modal = this.modalCtrl.create(NewServicePage);
+    modal.present();
   }
 }

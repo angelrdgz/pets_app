@@ -1,23 +1,24 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="green-app">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>Mis Servicios</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
+    <ion-item (click)="serviceDetails(1)">
+      <ion-avatar item-start>
+        <img src="assets/imgs/pp.jpg">
+      </ion-avatar>
+      <h2>Finn</h2>
+      <h3>Don't Know What To Do!</h3>
+      <p>I've had a pretty messed up day. If we just...</p>
+    </ion-item>
   </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+  <ion-fab bottom right>
+    <button ion-fab mini color="green-app" (click)="newService()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>

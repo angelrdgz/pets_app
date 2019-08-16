@@ -25,7 +25,6 @@ export class DogDetailsPage {
   }
 
   getPet(id){
-
     this.apiProvider.getPet(id).then((data:any) => {
       console.log(data)
       this.pet = data.data;

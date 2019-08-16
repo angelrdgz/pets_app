@@ -6,7 +6,10 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DogDetailsPage } from '../pages/dog-details/dog-details';
 import { NewPetPage } from '../pages/new-pet/new-pet';
+
 import { ListPage } from '../pages/list/list';
+import { ServiceDetailsPage } from '../pages/service-details/service-details';
+import { NewServicePage } from '../pages/new-service/new-service';
 
 import { LoginPage } from '../pages/login/login';
 import { SignUpPage } from '../pages/sign-up/sign-up';
@@ -23,11 +26,13 @@ import { ApiProvider } from '../providers/api/api';
   declarations: [
     MyApp,
     HomePage,
+    DogDetailsPage,
     ListPage,
     LoginPage,
     SignUpPage,
-    DogDetailsPage,
-    NewPetPage
+    ServiceDetailsPage,
+    NewPetPage,
+    NewServicePage
   ],
   imports: [
     BrowserModule,
@@ -39,11 +44,13 @@ import { ApiProvider } from '../providers/api/api';
   entryComponents: [
     MyApp,
     HomePage,
+    DogDetailsPage,
     ListPage,
     LoginPage,
     SignUpPage,
-    DogDetailsPage,
-    NewPetPage
+    ServiceDetailsPage,
+    NewPetPage,
+    NewServicePage
   ],
   providers: [
     StatusBar,
